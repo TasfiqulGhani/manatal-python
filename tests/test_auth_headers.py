@@ -2,7 +2,9 @@ import httpx
 import respx
 
 from manatal import Manatal
+from manatal._headers import SDK_LANGUAGE, SDK_NAME
 from manatal._http import DEFAULT_BASE_URL
+from manatal._version import __version__
 
 
 @respx.mock
@@ -16,8 +18,12 @@ def test_authorization_token_header():
     client = Manatal(api_key="secret-token", rate_limit=1000)
     list(client.candidates.list())
     assert route.called
-    assert route.calls[0].request.headers["Authorization"] == "Token secret-token"
-    assert "manatal-python/" in route.calls[0].request.headers["User-Agent"]
+    headers = route.calls[0].request.headers
+    assert headers["Authorization"] == "Token secret-token"
+    assert headers["User-Agent"] == f"{SDK_NAME}/{__version__}"
+    assert headers["X-Manatal-SDK"] == SDK_NAME
+    assert headers["X-Manatal-SDK-Version"] == __version__
+    assert headers["X-Manatal-SDK-Language"] == SDK_LANGUAGE
     client.close()
 
 

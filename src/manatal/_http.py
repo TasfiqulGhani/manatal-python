@@ -7,7 +7,7 @@ from typing import Any, Callable, Mapping, MutableMapping, Optional
 
 import httpx
 
-from manatal._version import __version__
+from manatal._headers import build_sdk_headers
 from manatal.models import wrap
 from manatal.exceptions import (
     APIError,
@@ -105,11 +105,7 @@ class HttpTransport:
         self._client = httpx.Client(
             base_url=DEFAULT_BASE_URL,
             timeout=timeout or DEFAULT_TIMEOUT,
-            headers={
-                "Authorization": f"Token {api_key}",
-                "Accept": "application/json",
-                "User-Agent": f"manatal-python/{__version__}",
-            },
+            headers=build_sdk_headers(api_key),
             transport=transport,
             follow_redirects=True,
         )

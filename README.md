@@ -157,6 +157,7 @@ except AuthenticationError:
 
 | Resource | Link |
 |----------|------|
+| **Dart / Flutter SDK (pub.dev)** | https://pub.dev/packages/manatal |
 | Manatal app | https://app.manatal.com/ |
 | Enable Open API & generate tokens | https://support.manatal.com/docs/manatal-api |
 | Open API settings | https://app.manatal.com/administration/features/open-api |
@@ -167,6 +168,22 @@ except AuthenticationError:
 
 Issues and pull requests are welcome:  
 https://github.com/TasfiqulGhani/manatal-python
+
+## Manatal Flutter SDK — mobile app
+
+Building a **Manatal mobile app** for iOS or Android? Use the companion [**manatal**](https://pub.dev/packages/manatal) package on pub.dev — same Open API, plus ready-made Flutter list widgets and a full example app.
+
+![Manatal Flutter example app demo](https://raw.githubusercontent.com/TasfiqulGhani/manatal-dart/main/screenshots/demo.gif)
+
+- API client + `ManatalCandidateList`, `ManatalJobList`, and more
+- Paginated lists, auth, and retries out of the box
+- Example app with Manatal-style UI (candidates, jobs, create flows)
+
+```bash
+flutter pub add manatal
+```
+
+**Links:** [pub.dev/packages/manatal](https://pub.dev/packages/manatal) · [GitHub](https://github.com/TasfiqulGhani/manatal-dart)
 
 ## License
 
